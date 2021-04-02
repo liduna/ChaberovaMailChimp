@@ -3,15 +3,15 @@ Feature: registration of a new user
 
   Scenario Outline:
     Given I navigate to a page mailchimp.com
-    When I write valid "<email address>"
-    And I write also available "<username>"
-    And I choose correct "<password>"
-    Then I can be "<registered>" as a new user
+    When I write valid email as <email address>
+    And I write also available username as <username>
+    And I choose correct password as <password>
+    Then I can be <registered> as a new user
 
     Examples:
-      | email address | username      | password      | registered |
-      | validEmail    | validUserName | validPassword | yes        |
-      | noEmail       | validUserName | validPassword | no         |
-      | validEmail    | longUsername  | validPassword | no         |
-      | validEmail    | usernameTaken | validPassword | no         |
+      | email address | username        | password        | registered |
+      | "validEmail"  | "validUserName" | "validPassword" | "yes"      |
+      | "noEmail"     | "validUserName" | "validPassword" | "no"       |
+      | "validEmail"  | "longUsername"  | "validPassword" | "no"       |
+      | "validEmail"  | "usernameTaken" | "validPassword" | "no"       |
 
