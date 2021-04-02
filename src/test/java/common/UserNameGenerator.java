@@ -11,7 +11,7 @@ public class UserNameGenerator {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
-        String validName = "Ludmila"+dateFormat.format(date);
+        String validName = "Ludmila"+RandomString.make(2) + dateFormat.format(date);
         //System.out.println(dateFormat.format(date));
 
 
@@ -26,7 +26,7 @@ public class UserNameGenerator {
                 .withinRange('a', 'z').build();
         String randomLetters = generator.generate(20);*/
 
-        String longUsername = RandomString.make(100);
+        String longUsername = RandomString.make(200);
         return longUsername;
     }
 
@@ -36,7 +36,7 @@ public class UserNameGenerator {
             username = randomizeName();
 
         }
-        else if (username.equals("userNameTaken")){
+        else if (username.equals("usernameTaken")){
             username = "blablaklakla";
             //class invalid-error
             //text "Another user with this username already exists. Maybe it's your evil twin. Spooky."

@@ -17,7 +17,7 @@ public class StepDefinitions {
     private WebDriver driver;
 
     private void waitUntil(WebDriver driver, By by){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.elementToBeClickable(by));
+        (new WebDriverWait(driver, 15)).until(ExpectedConditions.elementToBeClickable(by));
         driver.findElement(by).click();
     }
 
@@ -26,7 +26,7 @@ public class StepDefinitions {
         System.setProperty("webdriver.chrome.driver","C:\\Program Files\\Selenium\\chromedriver.exe" );
         driver = new ChromeDriver();
         driver.get("https:\\/\\/login.mailchimp.com\\/signup/");
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         waitUntil(driver, By.cssSelector("#onetrust-accept-btn-handler"));
         /*WebElement cookies = driver.findElement(By.cssSelector("#onetrust-accept-btn-handler"));
         cookies.click();*/
@@ -39,6 +39,8 @@ public class StepDefinitions {
         EmailInput testMail = new EmailInput();
         email =  testMail.insertEmail(email);
         emailInput.sendKeys(email);
+
+
 
     }
 
@@ -63,6 +65,8 @@ public class StepDefinitions {
     @Then("I can be {string} as a new user")
     public void iCanBeRegisteredAsANewUser(String registration) {
        // throw new io.cucumber.java.PendingException();
+        WebElement cookies = driver.findElement(By.cssSelector("#onetrust-accept-btn-handler"));
+        if (cookies.isDisplayed()) cookies.click();
         WebElement signUpButton = driver.findElement(By.cssSelector("#create-account"));
         signUpButton.click();
         //login successful
