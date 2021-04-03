@@ -12,7 +12,6 @@ public class UserNameGenerator {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
         String validName = "Ludmila"+RandomString.make(2) + dateFormat.format(date);
-        //System.out.println(dateFormat.format(date));
 
 
         return validName;
@@ -20,13 +19,8 @@ public class UserNameGenerator {
 
     public String createLongName(){
 
-        //String alphabet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
-        //StringBuilder builder = new StringBuilder();
-       /* RandomStringGenerator generator = new RandomStringGenerator.Builder()
-                .withinRange('a', 'z').build();
-        String randomLetters = generator.generate(20);*/
-
         String longUsername = RandomString.make(200);
+
         return longUsername;
     }
 

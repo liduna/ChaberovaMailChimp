@@ -13,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertEquals;
+
 public class StepDefinitions {
     private WebDriver driver;
 
@@ -27,9 +29,8 @@ public class StepDefinitions {
         driver = new ChromeDriver();
         driver.get("https:\\/\\/login.mailchimp.com\\/signup/");
         //driver.manage().window().maximize();
+
         waitUntil(driver, By.cssSelector("#onetrust-accept-btn-handler"));
-        /*WebElement cookies = driver.findElement(By.cssSelector("#onetrust-accept-btn-handler"));
-        cookies.click();*/
 
     }
     @When("I write valid email as {string}")
@@ -39,8 +40,6 @@ public class StepDefinitions {
         EmailInput testMail = new EmailInput();
         email =  testMail.insertEmail(email);
         emailInput.sendKeys(email);
-
-
 
     }
 
@@ -62,49 +61,22 @@ public class StepDefinitions {
         passwordInput.sendKeys(password);
     }
 
-    @Then("I can be {string} as a new user")
-    public void iCanBeRegisteredAsANewUser(String registration) {
-       // throw new io.cucumber.java.PendingException();
+    @Then("I can be registered as a new user and I see a {string}")
+    public void iCanBeRegisteredAsANewUser(String message) {
+
         WebElement cookies = driver.findElement(By.cssSelector("#onetrust-accept-btn-handler"));
         if (cookies.isDisplayed()) cookies.click();
+
         WebElement signUpButton = driver.findElement(By.cssSelector("#create-account"));
         signUpButton.click();
-        //login successful
-        //https://login.mailchimp.com/signup/success/?username=4hw4iTm3hau7tXjV1q9fbPHUzm9ZdB6xx67wXMhbhjE2Fec7nyhIxQDVBlDN1Ihw4IqhBA47K1MIsidNjqtILc5Nmge7Cq6PckBx&userId=155511514&loginId=167178086
+
+        WebElement confirmationMessage = driver.findElement(By.className("!margin-bottom--lv3"));
+        assertEquals("Check your email",confirmationMessage.getText());
+
+        System.out.println(confirmationMessage.getText());
 
     }
 
 
-/*
-    @When("I write valid email as {string}")
-    public void iWrite(String email) {
-        WebElement emailInput = driver.findElement(By.cssSelector("#email"));
-        
-        emailInput.sendKeys(email);
-        //throw new io.cucumber.java.PendingException();
-
-
-    }
-
-    @And("I write also available username as {string}")
-    public void iWriteAlso(String arg0) {
-
-        throw new io.cucumber.java.PendingException();
-    }
-
-
-    @And("I choose correct password as {string}")
-    public void iChooseCorrect(String arg0) {
-        throw new io.cucumber.java.PendingException();
-    }
-
-
-    @Then("I can be {string} as a new user")
-    public void iCanBeAsANewUser(String arg0) {
-        throw new io.cucumber.java.PendingException();
-
-    }
-
-*/
 
 }
