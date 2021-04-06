@@ -25,12 +25,7 @@ public class StepDefinitions {
         driver.findElement(by).click();
     }
 
-    private void waitUntilDisplayed(WebDriver driver, By by) {
 
-        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(by));
-
-
-    }
 
     @Given("I navigate to a page mailchimp.com")
     public void i_navigate_to_a_page_mailchimp_com() {
@@ -44,10 +39,10 @@ public class StepDefinitions {
 
     @When("I write an email as {string}")
     public void i_write_an_email_as(String email) {
-        WebElement emailInput = driver.findElement(By.cssSelector("#email"));
+        WebElement userEmail = driver.findElement(By.cssSelector("#email"));
         EmailInput testMail = new EmailInput();
         email = testMail.insertEmail(email);
-        emailInput.sendKeys(email);
+        userEmail.sendKeys(email);
     }
 
 
@@ -88,52 +83,25 @@ public class StepDefinitions {
             WebElement confirmation = driver.findElement(By.cssSelector(".\\!margin-bottom--lv3"));
             message = identifier.identifyMessage(message);
             assertEquals(message, confirmation.getText());
+            driver.close();
         }
 
         else {
             String error = driver.findElement(By.cssSelector(".invalid-error")).getText();
             message = identifier.identifyMessage(message);
             assertEquals(message, error);
+            driver.close();
         }
-        driver.close();
+
 
     }
 
-    //System.out.println(message);
-    //System.out.println(error.getText());
+
 
 
 }
 
-        /*
 
-        if (driver.findElement(By.cssSelector(".\\!margin-bottom--lv3")).getText().contains("Check")) {
-
-
-            WebElement confirmation = driver.findElement(By.cssSelector(".\\!margin-bottom--lv3"));
-            message = confirmation.getText();
-
-            System.out.println("Signup successful: " + message);
-
-            assertEquals("Check your email", message);
-
-            driver.close();
-
-        }
-        else {
-           // MessageIdentifier identifier = new MessageIdentifier();
-            message = identifier.identifyMessage(message);
-            WebElement error = driver.findElement(By.cssSelector(".invalid-error"));
-            System.out.println(message);
-            System.out.println(error.getText());
-
-            assertEquals(message, error.getText());
-
-            driver.close();
-
-        }
-
-*/
 
 
 

@@ -32,8 +32,7 @@ public class UserNameGenerator {
         }
         else if (username.equals("usernameTaken")){
             username = "blablaklakla";
-            //class invalid-error
-            //text "Another user with this username already exists. Maybe it's your evil twin. Spooky."
+
 
         }
         else if (username.equals("longUsername")){

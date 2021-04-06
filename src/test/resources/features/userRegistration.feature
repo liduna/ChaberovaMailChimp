@@ -15,5 +15,5 @@ Feature: registration of a new user
       | "validEmail"  | "usernameTaken" | "validPassword" |"usernameTakenError"  |
       | "noEmail"     | "validUsername" | "validPassword" |"noEmailError"       |
       | "validEmail"  | "longUsername"  | "validPassword" |"longUsernameError"  |
-      | "validEmail"  | "validUsername" | "validPassword" |"Signup successful" |
+      | "validEmail"  | "validUsername" | "validPassword" |"signup successful" |
 

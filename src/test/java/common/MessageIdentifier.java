@@ -4,7 +4,7 @@ public class MessageIdentifier {
 
     public String identifyMessage(String message){
 
-        if(message.equals("Signup successful")){
+        if(message.equals("signup successful")){
             System.out.println("Signup attempt successful");
             message = "Check your email";
 
