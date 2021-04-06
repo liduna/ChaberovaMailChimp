@@ -7,13 +7,13 @@ Feature: registration of a new user
     And I write also a username as <username>
     And I choose correct password as <password>
     And I click on signUp button
-    Then I can see respective <message>
+    Then I can see a correct <message> based on respective input
 
 
     Examples:
-      | email         | username        | password        | message                 |
-      | "validEmail"  | "validUsername" | "validPassword" |"Signup successful"      |
-      | "noEmail"     | "validUsername" | "validPassword" |"No Email failure"       |
-      | "validEmail"  | "longUsername"  | "validPassword" |"Long username failure"  |
-      | "validEmail"  | "usernameTaken" | "validPassword" |"Username taken failure" |
+      | email         | username        | password        | message             |
+      | "validEmail"  | "usernameTaken" | "validPassword" |"usernameTakenError"  |
+      | "noEmail"     | "validUsername" | "validPassword" |"noEmailError"       |
+      | "validEmail"  | "longUsername"  | "validPassword" |"longUsernameError"  |
+      | "validEmail"  | "validUsername" | "validPassword" |"Signup successful" |
 
