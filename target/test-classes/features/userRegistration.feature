@@ -11,9 +11,9 @@ Feature: registration of a new user
 
 
     Examples:
-      | email         | username        | password        | message             |
-      | "validEmail"  | "usernameTaken" | "validPassword" |"usernameTakenError"  |
-      | "noEmail"     | "validUsername" | "validPassword" |"noEmailError"       |
-      | "validEmail"  | "longUsername"  | "validPassword" |"longUsernameError"  |
-      | "validEmail"  | "validUsername" | "validPassword" |"signup successful" |
+      | email         | username        | password        | message                                       |
+      | "validEmail"  | "usernameTaken" | "validPassword" |"Another user with this username already exists. Maybe it's your evil twin. Spooky." |
+      | "noEmail"     | "validUsername" | "validPassword" |"Please enter a value"                         |
+      | "validEmail"  | "longUsername"  | "validPassword" |"Enter a value less than 100 characters long"  |
+      | "validEmail"  | "validUsername" | "validPassword" |"Check your email"                             |
 

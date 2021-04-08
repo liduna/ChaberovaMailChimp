@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import common.EmailInput;
-import common.MessageIdentifier;
 import common.UserNameGenerator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -11,7 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -76,20 +74,26 @@ public class StepDefinitions {
 
     @Then("I can see a correct {string} based on respective input")
     public void i_can_see_respective(String message) {
-        MessageIdentifier identifier = new MessageIdentifier();
+
 
         if (driver.findElements(By.cssSelector(".invalid-error")).isEmpty()) {
 
-            WebElement confirmation = driver.findElement(By.cssSelector(".\\!margin-bottom--lv3"));
-            message = identifier.identifyMessage(message);
-            assertEquals(message, confirmation.getText());
+          String confirmation = driver.findElement(By.cssSelector(".\\!margin-bottom--lv3")).getText();
+
+            assertEquals(message, confirmation);
+
+            System.out.println("The message displayed: "+ confirmation);
+
             driver.close();
         }
 
         else {
             String error = driver.findElement(By.cssSelector(".invalid-error")).getText();
-            message = identifier.identifyMessage(message);
+
             assertEquals(message, error);
+
+            System.out.println("The message displayed: " + error);
+
             driver.close();
         }
 
