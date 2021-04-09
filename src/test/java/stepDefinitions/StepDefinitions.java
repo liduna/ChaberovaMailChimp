@@ -24,7 +24,6 @@ public class StepDefinitions {
     }
 
 
-
     @Given("I navigate to a page mailchimp.com")
     public void i_navigate_to_a_page_mailchimp_com() {
 
@@ -75,32 +74,24 @@ public class StepDefinitions {
     @Then("I can see a correct {string} based on respective input")
     public void i_can_see_respective(String message) {
 
-
         if (driver.findElements(By.cssSelector(".invalid-error")).isEmpty()) {
 
-          String confirmation = driver.findElement(By.cssSelector(".\\!margin-bottom--lv3")).getText();
-
+            String confirmation = driver.findElement(By.cssSelector(".\\!margin-bottom--lv3")).getText();
             assertEquals(message, confirmation);
 
-            System.out.println("The message displayed: "+ confirmation);
-
+            System.out.println("Signup attempt successful. The message displayed: " + confirmation);
             driver.close();
-        }
 
-        else {
+        } else {
             String error = driver.findElement(By.cssSelector(".invalid-error")).getText();
-
             assertEquals(message, error);
 
-            System.out.println("The message displayed: " + error);
-
+            System.out.println("The  error message displayed on the page: " + error);
             driver.close();
         }
 
 
     }
-
-
 
 
 }

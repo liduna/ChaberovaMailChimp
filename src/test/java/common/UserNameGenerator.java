@@ -11,7 +11,7 @@ public class UserNameGenerator {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
-        String validName = "Ludmila"+RandomString.make(2) + dateFormat.format(date);
+        String validName = "Mila"+RandomString.make(5) + dateFormat.format(date);
 
 
         return validName;
